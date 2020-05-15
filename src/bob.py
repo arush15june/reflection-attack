@@ -30,7 +30,7 @@ PROTOCOL_TEXT = """
     Protocol
 
         1. Alice ------- [ A, Ra ]  -------> Bob
-        2. Alice <---- [ Rb, Kab(Ra) ] -----> Bob
+        2. Alice <---- [ Rb, Kab(Ra) ] ----- Bob
         3. Alice ------ [ Kab(Rb) ]  ------> Bob
 
     Implementation
