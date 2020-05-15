@@ -77,7 +77,11 @@ class Bob:
         
         @return bytes: decrypted buffer
         """
-        ct = base64.b64decode(buffer)
+        try:
+            ct = base64.b64decode(buffer)
+        except:
+            print('f a i l')
+            return bytes('fail')
 
         cipher = AES.new(self.psk, AES.MODE_CBC, FIXED_IV)
         pt = unpad(cipher.decrypt(ct), AES.block_size)
@@ -99,7 +103,11 @@ def challenge():
 
     challenge = str(input('Challenge for Bob (in Base64): ')).rstrip()
     
-    challenge_ct = bob.encrypt(base64.b64decode(challenge))
+    try:
+        challenge_ct = bob.encrypt(base64.b64decode(challenge))
+    except:
+        print("f a i l")
+        return
     
     bob_challenge = get_random_bytes(32)
     bob_challenge_ct = bob.encrypt(bob_challenge)
