@@ -4,5 +4,7 @@ services:
   reflect:
     build: .
     restart: always
+    environment:
+      - FLAG="FLAG{ALICE_ITS_ME_BOB}"
     ports:
       - "9128:50000"

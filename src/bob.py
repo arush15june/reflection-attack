@@ -67,7 +67,7 @@ class Bob:
 
         @return bytes: encrypted buffer
         """
-        cipher = AES.new(self.psk, AES.MODE_CBC, FIXED_IV)
+        cipher = AES.new(self.psk, AES.MODE_GCM, FIXED_IV)
         ct_bytes = cipher.encrypt(pad(buffer, AES.block_size))
         return base64.b64encode(ct_bytes)
 
@@ -83,7 +83,7 @@ class Bob:
             print('f a i l')
             return bytes('fail')
 
-        cipher = AES.new(self.psk, AES.MODE_CBC, FIXED_IV)
+        cipher = AES.new(self.psk, AES.MODE_GCM, FIXED_IV)
         pt = unpad(cipher.decrypt(ct), AES.block_size)
         return pt
 

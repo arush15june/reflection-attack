@@ -14,4 +14,4 @@ RUN chmod 770 /home/reflect/bob.py
 
 RUN touch .PSK && python -c "from Crypto.Random import get_random_bytes;f = open('.PSK', 'wb');f.write(get_random_bytes(16));f.close();"
 
-CMD socat -v -v -T10 TCP-LISTEN:50000,reuseaddr,fork EXEC:/home/reflect/bob.py
+CMD socat -v -v -T30 TCP-LISTEN:50000,reuseaddr,fork EXEC:/home/reflect/bob.py
