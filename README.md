@@ -33,3 +33,28 @@ Implementation
     - AES-256-GCM used for encryption using Kab.
     - The IV is fixed to 16 null bytes.
 ```
+
+## Attack
+
+The vulnerability in this case is to impersonate Alice, open the communication channel to Bob and receive a challenge from them, parallely, open another communication channel to Bob and send the challenge received from Bob as the challenge to Bob which will be returned as the response encrypted by the pre-shared secret key! 
+
+This bypasses the authentication protocol as Bob gets the response it was expecting, i.e the ciphertext of its sent challenge and authenticates the attacker to be Alice.
+
+Following the notation described in the Protocol section.
+
+This attack is described in pg.514, Note 9.2, On design of security of protocols [M. van Steen and A.S. Tanenbaum, Distributed Systems, 3rd ed., distributed-systems.net, 2017.].
+```
+Reflection Attack
+
+    1. Haxor ------- [ A, Ra ]  -------> Bob --
+                                               |- Channel 1 
+    2. Haxor <---- [ Rb, Kab(Ra) ] ----- Bob --
+    
+    1. Haxor ------- [ A, Rb ]  -------> Bob --
+                                               |- Channel 2 
+    2. Haxor <---- [ Rb', Kab(Rb) ] ---- Bob --
+ 
+    3. Haxor ------ [ Kab(Ra) ] -------> Bob --   Channel 1
+
+    Haxor is authentication as Alice!
+```
