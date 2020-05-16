@@ -42,7 +42,7 @@ This bypasses the authentication protocol as Bob gets the response it was expect
 
 Following the notation described in the Protocol section.
 
-This attack is described in pg.514, Note 9.2, On design of security of protocols [M. van Steen and A.S. Tanenbaum, Distributed Systems, 3rd ed., distributed-systems.net, 2017.].
+This attack is described in pg.514, Note 9.2, On design of security of protocols [M. van Steen and A.S. Tanenbaum, Distributed Systems, 3rd ed., distributed-systems.net, 2017.].a
 ```
 Reflection Attack
 
@@ -56,5 +56,5 @@ Reflection Attack
  
     3. Haxor ------ [ Kab(Ra) ] -------> Bob --   Channel 1
 
-    Haxor is authentication as Alice!
+    Haxor is authenticated as Alice!
 ```
